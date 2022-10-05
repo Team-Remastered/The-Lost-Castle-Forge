@@ -1,0 +1,20 @@
+{
+
+  "name": "lostcastle:lost_castle/top_middle_pool",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+
+        "location": "lostcastle:lost_castle/castle_tm",
+
+        "processors": "lostcastle:randomize_stonebrick",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}
