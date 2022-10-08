@@ -7,8 +7,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ChunkPos;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.WorldGenerationContext;
+import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
@@ -28,7 +30,7 @@ public class LostCastle extends Structure {
                     Codec.intRange(0, 30).fieldOf("size").forGetter(structure -> structure.size),
                     HeightProvider.CODEC.fieldOf("start_height").forGetter(structure -> structure.startHeight),
                     Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter(structure -> structure.projectStartToHeightmap),
-                    Codec.intRange(1, 1000).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter)
+                    Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter(structure -> structure.maxDistanceFromCenter)
             ).apply(instance, LostCastle::new)).codec();
 
     private final Holder<StructureTemplatePool> startPool;
@@ -57,16 +59,20 @@ public class LostCastle extends Structure {
 
     private static boolean extraSpawningChecks(Structure.GenerationContext context) {
         // Grabs the chunk position we are at
-        ChunkPos chunkpos = context.chunkPos();
+        ChunkPos chunkPos = context.chunkPos();
+        int x = chunkPos.getMinBlockX();
+        int z = chunkPos.getMinBlockZ();
+        int startHeight = context.chunkGenerator().getFirstOccupiedHeight(x, z, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, context.heightAccessor(), context.randomState());
 
-        // Checks to make sure our structure does not spawn above land that's higher than y = 150
-        // to demonstrate how this method is good for checking extra conditions for spawning
-        return context.chunkGenerator().getFirstOccupiedHeight(
-                chunkpos.getMinBlockX(),
-                chunkpos.getMinBlockZ(),
-                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-                context.heightAccessor(),
-                context.randomState()) < 150;
+        //Get Height at 78 blocks from castle spawn point (around the castle)
+        int height1 = context.chunkGenerator().getFirstOccupiedHeight(x + 78, z, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, context.heightAccessor(), context.randomState());
+        int height2 = context.chunkGenerator().getFirstOccupiedHeight(x -78, z, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, context.heightAccessor(), context.randomState());
+        int height3 = context.chunkGenerator().getFirstOccupiedHeight(x, z + 78, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, context.heightAccessor(), context.randomState());
+        int height4 = context.chunkGenerator().getFirstOccupiedHeight(x, z - 78, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, context.heightAccessor(), context.randomState());
+
+        //Check if the height difference around the castle is bigger than 10. If not spawn the castle.
+        return (Math.abs(startHeight - height1) < 10 && Math.abs(startHeight - height2) < 10 && Math.abs(startHeight - height3) < 10 && Math.abs(startHeight - height4) < 10);
+
     }
 
     @Override
@@ -85,7 +91,11 @@ public class LostCastle extends Structure {
 
         // Turns the chunk coordinates into actual coordinates we can use. (Gets corner of that chunk)
         ChunkPos chunkPos = context.chunkPos();
-        BlockPos blockPos = new BlockPos(chunkPos.getMinBlockX(), startY, chunkPos.getMinBlockZ());
+        int x = chunkPos.getMinBlockX();
+        int z = chunkPos.getMinBlockZ();
+        WorldgenRandom worldgenrandom = context.random();
+
+        BlockPos blockPos = new BlockPos(x, startY, z);
 
         Optional<Structure.GenerationStub> structurePiecesGenerator =
                 JigsawPlacement.addPieces(

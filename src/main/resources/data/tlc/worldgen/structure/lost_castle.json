@@ -6,7 +6,7 @@
 
   "size": 30,
 
-  "max_distance_from_center": 400,
+  "max_distance_from_center": 128,
 
   "biomes": "#tlc:has_structure/structure_lost_castle_biomes",
 
