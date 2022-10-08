@@ -1,6 +1,8 @@
 package com.teamremastered.lostcastle;
 
 import com.mojang.logging.LogUtils;
+import com.teamremastered.lostcastle.registries.LCProcessorsRegistry;
+import com.teamremastered.lostcastle.registries.LCRegistery;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -21,6 +23,7 @@ public class TheLostCastle
 
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         LCRegistery.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
+        LCProcessorsRegistry.init();
     }
 
 }
