@@ -3,10 +3,10 @@ loaderVersion="[43,)"
 license="GNU LGPLv3"
 issueTrackerURL="https://github.com/Team-Remastered/End-Remastered-Forge/issues"
 [[mods]]
-modId="lostcastle"
+modId="tlc"
 version="${file.jarVersion}"
 displayName="The Lost Castle"
-logoFile="lostcastlelogo.png"
+logoFile="lost_castlelogo.png"
 authors="Team Remastered"
 description='''
 End Remastered makes your Minecraft experience more challenging by emphasizing the adventurous side of the game.
@@ -18,13 +18,13 @@ Once you have all the eyes, you have the choice to follow them until you reach a
 
 After reaching one of these structures, you will have to find the hidden portal room, and activate the portal by placing the 12 eyes inside the frames.
 '''
-[[dependencies.lostcastle]]
+[[dependencies.tlc]]
     modId="forge"
     mandatory=true
     versionRange="[43,)"
     ordering="NONE"
     side="BOTH"
-[[dependencies.lostcastle]]
+[[dependencies.tlc]]
     modId="minecraft"
     mandatory=true
     versionRange="[1.19.2, 1.20)"

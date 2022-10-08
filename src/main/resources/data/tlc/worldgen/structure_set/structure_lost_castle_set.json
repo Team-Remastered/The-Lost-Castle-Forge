@@ -1,0 +1,21 @@
+{
+  "structures": [
+    {
+      "structure": "tlc:lost_castle",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:concentric_rings",
+
+    "count": 256,
+
+    "distance": 64,
+
+    "preferred_biomes": "#minecraft:stronghold_biased_to",
+
+    "salt": 1734426469,
+
+    "spread": 6
+  }
+}

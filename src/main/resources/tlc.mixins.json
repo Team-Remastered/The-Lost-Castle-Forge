@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "package": "com.teamremastered.tlc.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "tlc.refmap.json",
+  "mixins": [
+  ],
+  "minVersion": "0.8"
+}

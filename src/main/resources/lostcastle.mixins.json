@@ -1,9 +1,0 @@
-{
-  "required": true,
-  "package": "com.teamremastered.lostcastle.mixin",
-  "compatibilityLevel": "JAVA_17",
-  "refmap": "lostcastle.refmap.json",
-  "mixins": [
-  ],
-  "minVersion": "0.8"
-}

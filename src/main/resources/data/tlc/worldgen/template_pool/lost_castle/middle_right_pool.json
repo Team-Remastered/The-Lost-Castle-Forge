@@ -1,0 +1,20 @@
+{
+
+  "name": "tlc:lost_castle/middle_right_pool",
+
+  "fallback": "minecraft:empty",
+
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+
+        "location": "tlc:lost_castle/castle_mr",
+
+        "processors": "tlc:main",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}

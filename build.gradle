@@ -33,7 +33,7 @@ minecraft {
             property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            mods { lostcastle { source sourceSets.main } }
+            mods { "${modid}" { source sourceSets.main } }
         }
         server {
             workingDirectory project.file('run')
@@ -42,7 +42,7 @@ minecraft {
             property 'mixin.env.refMapRemappingFile', "${buildDir}/createSrgToMcp/output.srg"
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
-            mods { lostcastle { source sourceSets.main } }
+            mods { "${modid}" { source sourceSets.main } }
         }
 
         data {
@@ -53,7 +53,7 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
             args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-            mods { lostcastle { source sourceSets.main } }
+            mods { "${modid}" { source sourceSets.main } }
         }
     }
 }
