@@ -1,5 +1,6 @@
-package com.teamremastered.lostcastle;
+package com.teamremastered.lostcastle.registries;
 
+import com.teamremastered.lostcastle.TheLostCastle;
 import com.teamremastered.lostcastle.structure.LostCastle;
 import net.minecraft.core.Registry;
 import net.minecraft.world.level.levelgen.structure.StructureType;

@@ -6,17 +6,16 @@
     }
   ],
   "placement": {
-    "type": "minecraft:random_spread",
+    "type": "minecraft:concentric_rings",
+
+    "count": 256,
+
+    "distance": 64,
+
+    "preferred_biomes": "#minecraft:stronghold_biased_to",
 
     "salt": 1734426469,
 
-    "spacing": 16,
-
-    "separation": 6,
-
-    "exclusion_zone": {
-      "chunk_count": 10,
-      "other_set": "minecraft:ocean_monuments"
-    }
+    "spread": 6
   }
 }

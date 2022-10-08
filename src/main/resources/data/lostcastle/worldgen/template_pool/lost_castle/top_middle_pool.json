@@ -11,7 +11,7 @@
 
         "location": "lostcastle:lost_castle/castle_tm",
 
-        "processors": "lostcastle:randomize_stonebrick",
+        "processors": "lostcastle:main",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
