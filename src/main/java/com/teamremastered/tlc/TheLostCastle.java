@@ -27,5 +27,4 @@ public class TheLostCastle
         LCProcessorsRegistry.init();
         LCTags.init();
     }
-
 }

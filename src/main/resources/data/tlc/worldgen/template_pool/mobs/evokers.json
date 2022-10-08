@@ -1,0 +1,15 @@
+{
+  "name": "tlc:mobs/evokers",
+  "fallback": "tlc:mobs/evokers",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "location": "tlc:lost_castle/hostile_mobs/evoker",
+        "processors": "minecraft:empty",
+        "projection": "rigid",
+        "element_type": "minecraft:single_pool_element"
+      }
+    }
+  ]
+}
