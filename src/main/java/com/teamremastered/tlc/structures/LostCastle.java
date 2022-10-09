@@ -56,11 +56,16 @@ public class LostCastle extends Structure {
     }
 
     private static int DistanceFromSpawn(ChunkPos structurePos) {
+        //Spawn point is always around 0 ~ 0
         ChunkPos spawnPointPos = new ChunkPos(0, 0);
-        int structurePosX = structurePos.getMinBlockX();
-        int structurePosZ = structurePos.getMinBlockZ();
 
-        return (int) Math.sqrt(Math.pow((structurePosX-spawnPointPos.x), 2) + Math.pow((structurePosZ-spawnPointPos.z), 2));
+        //Convert the structure position into blocks and get the structure distance from spawn
+        int structurePosX = structurePos.x << 4;
+        int structurePosZ = structurePos.z << 4;
+        int distanceFromSpawn = (int) Math.sqrt(Math.pow((structurePosX-spawnPointPos.x), 2) + Math.pow((structurePosZ-spawnPointPos.z), 2));
+
+        System.out.println("Distance from spawn is: " + distanceFromSpawn);
+        return distanceFromSpawn;
     }
 
     private static boolean extraSpawningChecks(Structure.GenerationContext context) {
@@ -78,7 +83,7 @@ public class LostCastle extends Structure {
         int height4 = context.chunkGenerator().getFirstOccupiedHeight(x, z - 78, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, context.heightAccessor(), context.randomState());
 
         //Check if the height difference around the castle is bigger than 10 and castle if the structure is within 5000 blocks from spawn. If not spawn the castle.
-        return (Math.abs(startHeight - height1) < 10 && Math.abs(startHeight - height2) < 10 && Math.abs(startHeight - height3) < 10 && Math.abs(startHeight - height4) < 10 && DistanceFromSpawn(chunkPos) > 325);
+        return (Math.abs(startHeight - height1) < 10 && Math.abs(startHeight - height2) < 10 && Math.abs(startHeight - height3) < 10 && Math.abs(startHeight - height4) < 10 && DistanceFromSpawn(chunkPos) > 5000);
 
     }
 
