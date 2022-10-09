@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.WorldGenerationContext;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
 import net.minecraft.world.level.levelgen.structure.Structure;
 import net.minecraft.world.level.levelgen.structure.StructureType;
@@ -56,6 +55,14 @@ public class LostCastle extends Structure {
         this.maxDistanceFromCenter = maxDistanceFromCenter;
     }
 
+    private static int DistanceFromSpawn(ChunkPos structurePos) {
+        ChunkPos spawnPointPos = new ChunkPos(0, 0);
+        int structurePosX = structurePos.getMinBlockX();
+        int structurePosZ = structurePos.getMinBlockZ();
+
+        return (int) Math.sqrt(Math.pow((structurePosX-spawnPointPos.x), 2) + Math.pow((structurePosZ-spawnPointPos.z), 2));
+    }
+
     private static boolean extraSpawningChecks(Structure.GenerationContext context) {
 
         // Grabs the chunk position we are at
@@ -70,8 +77,8 @@ public class LostCastle extends Structure {
         int height3 = context.chunkGenerator().getFirstOccupiedHeight(x, z + 78, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, context.heightAccessor(), context.randomState());
         int height4 = context.chunkGenerator().getFirstOccupiedHeight(x, z - 78, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, context.heightAccessor(), context.randomState());
 
-        //Check if the height difference around the castle is bigger than 10. If not spawn the castle.
-        return (Math.abs(startHeight - height1) < 10 && Math.abs(startHeight - height2) < 10 && Math.abs(startHeight - height3) < 10 && Math.abs(startHeight - height4) < 10);
+        //Check if the height difference around the castle is bigger than 10 and castle if the structure is within 5000 blocks from spawn. If not spawn the castle.
+        return (Math.abs(startHeight - height1) < 10 && Math.abs(startHeight - height2) < 10 && Math.abs(startHeight - height3) < 10 && Math.abs(startHeight - height4) < 10 && DistanceFromSpawn(chunkPos) > 325);
 
     }
 

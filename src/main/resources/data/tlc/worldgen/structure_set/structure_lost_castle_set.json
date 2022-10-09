@@ -6,18 +6,17 @@
     }
   ],
   "placement": {
-    "type": "minecraft:concentric_rings",
-
-    "count": 256,
-
-    "distance": 64,
-
-    "preferred_biomes": "#minecraft:forest",
+    "type": "minecraft:random_spread",
 
     "salt": 1734426469,
 
-    "spread": 100,
+    "spacing": 300,
 
-    "spacing": 55
+    "separation": 200,
+
+    "exclusion_zone": {
+      "chunk_count": 7,
+      "other_set": "minecraft:villages"
+    }
   }
 }
