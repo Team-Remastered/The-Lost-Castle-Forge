@@ -1,5 +1,6 @@
 package com.teamremastered.tlc.utils;
 
+import com.teamremastered.tlc.TheLostCastle;
 import com.teamremastered.tlc.registries.LCTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -26,14 +27,30 @@ import java.util.concurrent.ThreadLocalRandom;
 @Mod.EventBusSubscriber
 public class LCMap {
 
+    public static boolean nullCheck = false;
+
     public static ItemStack createMap(ServerLevel serverLevel, BlockPos playerPosition) {
         // Get position of marker
         BlockPos structurePos = serverLevel.findNearestMapStructure(LCTags.LOST_CASTLE_MAP, playerPosition, 100, false);
+        ItemStack stack;
 
         // Create map
-        ItemStack stack = MapItem.create(serverLevel, structurePos.getX(), structurePos.getZ(), (byte) 2 , true, true);
+        if (structurePos == null) {
+            stack = MapItem.create(serverLevel, 0, 0, (byte) 2 , true, true);
+            nullCheck = true;
+        }
+        else {
+            stack = MapItem.create(serverLevel, structurePos.getX(), structurePos.getZ(), (byte) 2 , true, true);
+        }
+
         MapItem.renderBiomePreviewMap(serverLevel, stack);
-        MapItemSavedData.addTargetDecoration(stack, structurePos, "+", MapDecoration.Type.TARGET_X);
+
+        if (structurePos == null) {
+            MapItemSavedData.addTargetDecoration(stack, BlockPos.ZERO, "+", MapDecoration.Type.TARGET_X);
+            TheLostCastle.LOGGER.error("Something went wrong with The Lost Castle");
+        } else {
+            MapItemSavedData.addTargetDecoration(stack, structurePos, "+", MapDecoration.Type.TARGET_X);
+        }
 
         // Set the name of the map
         stack.setHoverName(Component.nullToEmpty("Lost Castle Map"));

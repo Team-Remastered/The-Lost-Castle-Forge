@@ -15,7 +15,7 @@ import org.slf4j.Logger;
 public class TheLostCastle
 {
     public static final String MODID = "tlc";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public TheLostCastle()
     {
