@@ -13,6 +13,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.MapItem;
 import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.saveddata.maps.MapDecoration;
 import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 import net.minecraftforge.event.village.VillagerTradesEvent;
@@ -61,7 +62,7 @@ public class LCMap {
             int min = 15;
             int max = 25;
             int priceEmeralds = ThreadLocalRandom.current().nextInt(min, max + 1);
-            if (!entity.level.isClientSide()) {
+            if (!entity.level.isClientSide() && entity.level.dimension() == Level.OVERWORLD) {
                 ItemStack map = createMap((ServerLevel) entity.level, entity.blockPosition());
                 return new MerchantOffer(new ItemStack(Items.EMERALD, priceEmeralds), new ItemStack(Items.COMPASS), map, 12, xp, 0.2F);
             }
