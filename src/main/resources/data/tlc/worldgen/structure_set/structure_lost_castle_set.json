@@ -12,10 +12,12 @@
 
     "distance": 64,
 
-    "preferred_biomes": "#minecraft:stronghold_biased_to",
+    "preferred_biomes": "#minecraft:forest",
 
     "salt": 1734426469,
 
-    "spread": 6
+    "spread": 100,
+
+    "spacing": 55
   }
 }

@@ -37,20 +37,15 @@ public class LCMap {
         // Create map
         if (structurePos == null) {
             stack = MapItem.create(serverLevel, 0, 0, (byte) 2 , true, true);
+            MapItemSavedData.addTargetDecoration(stack, BlockPos.ZERO, "+", MapDecoration.Type.TARGET_X);
+            TheLostCastle.LOGGER.error("Something went wrong with The Lost Castle");
             nullCheck = true;
         }
         else {
             stack = MapItem.create(serverLevel, structurePos.getX(), structurePos.getZ(), (byte) 2 , true, true);
-        }
-
-        MapItem.renderBiomePreviewMap(serverLevel, stack);
-
-        if (structurePos == null) {
-            MapItemSavedData.addTargetDecoration(stack, BlockPos.ZERO, "+", MapDecoration.Type.TARGET_X);
-            TheLostCastle.LOGGER.error("Something went wrong with The Lost Castle");
-        } else {
             MapItemSavedData.addTargetDecoration(stack, structurePos, "+", MapDecoration.Type.TARGET_X);
         }
+        MapItem.renderBiomePreviewMap(serverLevel, stack);
 
         // Set the name of the map
         stack.setHoverName(Component.nullToEmpty("Lost Castle Map"));
@@ -74,7 +69,7 @@ public class LCMap {
         }
     }
 
-    // Add Map to Cartographers
+    // Add the map to the Cartographer's trade
     @SubscribeEvent
     public static void onVillagerTradesEvent(VillagerTradesEvent event) {
         if (event.getType() == VillagerProfession.CARTOGRAPHER) {

@@ -19,10 +19,11 @@ public class TheLostCastle
 
     public TheLostCastle()
     {
-        // Register ourselves for server and other game events we are interested in
+        // Register ourselves for server and other game events we are interested in. Idk if I can delete this, I leave it there in just in case.
         MinecraftForge.EVENT_BUS.register(this);
-
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        // Register the stuff
         LCStructures.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
         LCProcessorsRegistry.init();
         LCTags.init();

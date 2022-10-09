@@ -20,7 +20,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Dynamically generates a foundation below the Castle like the Mansion.
- * Credit to YungNickYoung for the Class
+ * Credit to YungNickYoung since I used his Leg Processor and tweaked it.
  * Repo: https://github.com/YUNG-GANG/YUNGs-Better-Strongholds/blob/multiloader/1.19/Common/src/main/java/com/yungnickyoung/minecraft/betterstrongholds/world/processor/LegProcessor.java
  */
 
@@ -37,7 +37,7 @@ public class FoundationProcessor extends StructureProcessor {
                                                              StructureTemplate.StructureBlockInfo blockInfoLocal,
                                                              StructureTemplate.StructureBlockInfo blockInfoGlobal,
                                                              StructurePlaceSettings structurePlacementData) {
-        if (blockInfoGlobal.state.is(Blocks.YELLOW_CONCRETE) || blockInfoGlobal.state.is(Blocks.YELLOW_CONCRETE)) {
+        if (blockInfoGlobal.state.is(Blocks.YELLOW_CONCRETE)) {
             if (levelReader instanceof WorldGenRegion worldGenRegion && !worldGenRegion.getCenter().equals(new ChunkPos(blockInfoGlobal.pos))) {
                 return blockInfoGlobal;
             }
@@ -52,18 +52,14 @@ public class FoundationProcessor extends StructureProcessor {
                     Blocks.POLISHED_ANDESITE.defaultBlockState()
             };
 
-            // Replace the glass itself
+            // Replace the yellow concrete itself
             if (blockInfoGlobal.state.is(Blocks.YELLOW_CONCRETE)) {
                 blockInfoGlobal = new StructureTemplate.StructureBlockInfo(blockInfoGlobal.pos, RandomBlocks(foundationBlocks), blockInfoGlobal.nbt);
             }
 
-         //   blockInfoGlobal = blockInfoGlobal.state.is(Blocks.YELLOW_CONCRETE) ? new StructureTemplate.StructureBlockInfo(blockInfoGlobal.pos, RandomBlocks(foundationBlocks), blockInfoGlobal.nbt) : new StructureTemplate.StructureBlockInfo(blockInfoGlobal.pos, Blocks.CYAN_TERRACOTTA.defaultBlockState(), blockInfoGlobal.nbt);
-
             // Reusable mutable
             BlockPos.MutableBlockPos mutable = blockInfoGlobal.pos.mutable().move(Direction.DOWN); // Move down since we already processed the first block
             BlockState currBlockState = levelReader.getBlockState(mutable);
-
-            int yBelow = 1;
 
             while (mutable.getY() > levelReader.getMinBuildHeight()
                     && mutable.getY() < levelReader.getMaxBuildHeight()
@@ -74,12 +70,10 @@ public class FoundationProcessor extends StructureProcessor {
                 // Move down
                 mutable.move(Direction.DOWN);
                 currBlockState = levelReader.getBlockState(mutable);
-                yBelow++;
             }
         }
         return blockInfoGlobal;
     }
-
 
     public BlockState RandomBlocks (BlockState[] randomBlocks) {
         int min = 0;

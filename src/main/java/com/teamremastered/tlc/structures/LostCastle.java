@@ -84,8 +84,8 @@ public class LostCastle extends Structure {
             return Optional.empty();
         }
 
-        // Set's our spawning blockpos's y offset to be 60 blocks up.
-        // Since we are going to have heightmap/terrain height spawning set to true further down, this will make it so we spawn 60 blocks above terrain.
+        // Set's our spawning blockpos's y
+        // Since we are going to have heightmap/terrain height spawning set to true further down, this will make it so we spawn at terrain height.
         // If we wanted to spawn on ocean floor, we would set heightmap/terrain height spawning to false and the grab the y value of the terrain with OCEAN_FLOOR_WG heightmap.
         int startY = this.startHeight.sample(context.random(), new WorldGenerationContext(context.chunkGenerator(), context.heightAccessor()));
 
@@ -93,7 +93,6 @@ public class LostCastle extends Structure {
         ChunkPos chunkPos = context.chunkPos();
         int x = chunkPos.getMinBlockX();
         int z = chunkPos.getMinBlockZ();
-        WorldgenRandom worldgenrandom = context.random();
 
         BlockPos blockPos = new BlockPos(x, startY, z);
 
@@ -106,7 +105,7 @@ public class LostCastle extends Structure {
                         blockPos, // Where to spawn the structure.
                         false, // "useExpansionHack" This is for legacy villages to generate properly. You should keep this false always.
                         this.projectStartToHeightmap, // Adds the terrain height's y value to the passed in blockpos's y value. (This uses WORLD_SURFACE_WG heightmap which stops at top water too)
-                        // Here, blockpos's y value is 60 which means the structure spawn 60 blocks above terrain height.
+                        // Here, blockpos's y value is 0 which means the structure spawn 0 blocks above terrain height.
                         // Set this to false for structure to be place only at the passed in blockpos's Y value instead.
                         // Definitely keep this false when placing structures in the nether as otherwise, heightmap placing will put the structure on the Bedrock roof.
                         this.maxDistanceFromCenter); // Maximum limit for how far pieces can spawn from center. You cannot set this bigger than 128 or else pieces gets cutoff.
