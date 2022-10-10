@@ -12,11 +12,6 @@
 
     "spacing": 300,
 
-    "separation": 200,
-
-    "exclusion_zone": {
-      "chunk_count": 7,
-      "other_set": "minecraft:villages"
-    }
+    "separation": 200
   }
 }

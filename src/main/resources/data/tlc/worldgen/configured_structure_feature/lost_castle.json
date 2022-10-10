@@ -1,0 +1,18 @@
+{
+
+  "type": "tlc:lost_castle",
+
+  "config": {
+
+  "start_pool": "tlc:lost_castle/start_pool",
+
+  "size": 30
+
+  },
+
+  "biomes": "#tlc:has_structure/structure_lost_castle_biomes",
+
+  "adapt_noise": false,
+
+  "spawn_overrides": {}
+}

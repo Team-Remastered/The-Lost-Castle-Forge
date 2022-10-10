@@ -5,7 +5,6 @@ import com.teamremastered.tlc.registries.LCTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -22,6 +21,7 @@ import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings("unused")
@@ -32,7 +32,7 @@ public class LCMap {
 
     public static ItemStack createMap(ServerLevel serverLevel, BlockPos playerPosition) {
         // Get position of marker
-        BlockPos structurePos = serverLevel.findNearestMapStructure(LCTags.LOST_CASTLE_MAP, playerPosition, 100, false);
+        BlockPos structurePos = serverLevel.findNearestMapFeature(LCTags.LOST_CASTLE_MAP, playerPosition, 100, false);
         ItemStack stack;
 
         // Create map
@@ -57,7 +57,7 @@ public class LCMap {
     public static class LCMapTrade implements VillagerTrades.ItemListing {
 
         @Override
-        public MerchantOffer getOffer(@Nonnull Entity entity, @NotNull RandomSource random){
+        public MerchantOffer getOffer(@Nonnull Entity entity, @NotNull Random random){
             int xp = 10;
             int min = 15;
             int max = 25;
