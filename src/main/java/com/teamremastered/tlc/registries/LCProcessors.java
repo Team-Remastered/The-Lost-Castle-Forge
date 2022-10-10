@@ -9,12 +9,12 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProc
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-public class LCProcessorsRegistry {
+public class LCProcessors {
 
     public static StructureProcessorType<FoundationProcessor> FOUNDATION_PROCESSOR = () -> FoundationProcessor.CODEC;
 
     public static void init() {
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(LCProcessorsRegistry::commonSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(LCProcessors::commonSetup);
     }
 
     private static void commonSetup(FMLCommonSetupEvent event) {

@@ -1,7 +1,7 @@
 package com.teamremastered.tlc.processors;
 
 import com.mojang.serialization.Codec;
-import com.teamremastered.tlc.registries.LCProcessorsRegistry;
+import com.teamremastered.tlc.registries.LCProcessors;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -84,6 +84,6 @@ public class FoundationProcessor extends StructureProcessor {
     }
 
     protected StructureProcessorType<?> getType() {
-        return LCProcessorsRegistry.FOUNDATION_PROCESSOR;
+        return LCProcessors.FOUNDATION_PROCESSOR;
     }
 }

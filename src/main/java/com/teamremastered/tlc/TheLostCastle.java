@@ -1,7 +1,7 @@
 package com.teamremastered.tlc;
 
 import com.mojang.logging.LogUtils;
-import com.teamremastered.tlc.registries.LCProcessorsRegistry;
+import com.teamremastered.tlc.registries.LCProcessors;
 import com.teamremastered.tlc.registries.LCTags;
 import com.teamremastered.tlc.registries.LCStructures;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,7 +25,7 @@ public class TheLostCastle
 
         // Register the stuff
         LCStructures.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
-        LCProcessorsRegistry.init();
+        LCProcessors.init();
         LCTags.init();
     }
 }
