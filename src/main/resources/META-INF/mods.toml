@@ -4,19 +4,11 @@ license="GNU LGPLv3"
 issueTrackerURL="https://github.com/Team-Remastered/End-Remastered-Forge/issues"
 [[mods]]
 modId="tlc"
-version="${file.jarVersion}"
+version="1.0.1"
 displayName="The Lost Castle"
-logoFile="lost_castlelogo.png"
+logoFile="logolc.png"
 authors="Team Remastered"
-description='''
-End Remastered makes your Minecraft experience more challenging by emphasizing the adventurous side of the game.
-
-
-Exploration is the main focus of End Remastered, and to reach the End and beat the Ender Dragon, you will have to find the 12 custom eyes by exploring vanilla structures and fighting vanilla bosses.
-
-Once you have all the eyes, you have the choice to follow them until you reach an End Gate or to trade with a Cartographer to obtain a map to the End Castle.
-
-After reaching one of these structures, you will have to find the hidden portal room, and activate the portal by placing the 12 eyes inside the frames.
+description='''The Lost Castle introduces an enormous castle that you'll be able to find with the help of a map given by a journeyman cartographer.
 '''
 [[dependencies.tlc]]
     modId="forge"
