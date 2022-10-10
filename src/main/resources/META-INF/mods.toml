@@ -4,11 +4,11 @@ license="GNU LGPLv3"
 issueTrackerURL="https://github.com/Team-Remastered/End-Remastered-Forge/issues"
 [[mods]]
 modId="tlc"
-version="${file.jarVersion}"
+version="1.0.0"
 displayName="The Lost Castle"
-logoFile="lost_castlelogo.png"
+logoFile="logolc.png"
 authors="Team Remastered"
-description='''
+description='''The Lost Castle introduces an enormous castle that you'll be able to find with the help of a map given by a journeyman cartographer.
 '''
 [[dependencies.tlc]]
     modId="forge"
