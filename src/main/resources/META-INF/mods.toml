@@ -4,7 +4,7 @@ license="GNU LGPLv3"
 issueTrackerURL="https://github.com/Team-Remastered/End-Remastered-Forge/issues"
 [[mods]]
 modId="tlc"
-version="1.0.0"
+version="1.0.1"
 displayName="The Lost Castle"
 logoFile="logolc.png"
 authors="Team Remastered"
