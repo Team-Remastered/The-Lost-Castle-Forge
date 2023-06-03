@@ -1,10 +1,10 @@
 modLoader="javafml"
-loaderVersion="[43,)"
+loaderVersion="[41,)"
 license="GNU LGPLv3"
 issueTrackerURL="https://github.com/Team-Remastered/End-Remastered-Forge/issues"
 [[mods]]
 modId="tlc"
-version="1.0.1"
+version="1.0.2"
 displayName="The Lost Castle"
 logoFile="logolc.png"
 authors="Team Remastered"
@@ -13,12 +13,12 @@ description='''The Lost Castle introduces an enormous castle that you'll be able
 [[dependencies.tlc]]
     modId="forge"
     mandatory=true
-    versionRange="[43,)"
+    versionRange="[41,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.tlc]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.19.2, 1.20)"
+    versionRange="[1.19, 1.20)"
     ordering="NONE"
     side="BOTH"
