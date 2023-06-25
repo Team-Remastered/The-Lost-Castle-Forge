@@ -37,8 +37,8 @@ public class FoundationProcessor extends StructureProcessor {
                                                              StructureTemplate.StructureBlockInfo blockInfoLocal,
                                                              StructureTemplate.StructureBlockInfo blockInfoGlobal,
                                                              StructurePlaceSettings structurePlacementData) {
-        if (blockInfoGlobal.state.is(Blocks.YELLOW_CONCRETE)) {
-            if (levelReader instanceof WorldGenRegion worldGenRegion && !worldGenRegion.getCenter().equals(new ChunkPos(blockInfoGlobal.pos))) {
+        if (blockInfoGlobal.state().is(Blocks.YELLOW_CONCRETE)) {
+            if (levelReader instanceof WorldGenRegion worldGenRegion && !worldGenRegion.getCenter().equals(new ChunkPos(blockInfoGlobal.pos()))) {
                 return blockInfoGlobal;
             }
 
@@ -53,12 +53,12 @@ public class FoundationProcessor extends StructureProcessor {
             };
 
             // Replace the yellow concrete itself
-            if (blockInfoGlobal.state.is(Blocks.YELLOW_CONCRETE)) {
-                blockInfoGlobal = new StructureTemplate.StructureBlockInfo(blockInfoGlobal.pos, RandomBlocks(foundationBlocks), blockInfoGlobal.nbt);
+            if (blockInfoGlobal.state().is(Blocks.YELLOW_CONCRETE)) {
+                blockInfoGlobal = new StructureTemplate.StructureBlockInfo(blockInfoGlobal.pos(), RandomBlocks(foundationBlocks), blockInfoGlobal.nbt());
             }
 
             // Reusable mutable
-            BlockPos.MutableBlockPos mutable = blockInfoGlobal.pos.mutable().move(Direction.DOWN); // Move down since we already processed the first block
+            BlockPos.MutableBlockPos mutable = blockInfoGlobal.pos().mutable().move(Direction.DOWN); // Move down since we already processed the first block
             BlockState currBlockState = levelReader.getBlockState(mutable);
 
             while (mutable.getY() > levelReader.getMinBuildHeight()

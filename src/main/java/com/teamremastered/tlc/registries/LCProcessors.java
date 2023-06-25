@@ -4,7 +4,6 @@ import com.teamremastered.tlc.TheLostCastle;
 import com.teamremastered.tlc.processors.FoundationProcessor;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;

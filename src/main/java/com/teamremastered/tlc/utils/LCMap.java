@@ -62,8 +62,8 @@ public class LCMap {
             int min = 15;
             int max = 25;
             int priceEmeralds = ThreadLocalRandom.current().nextInt(min, max + 1);
-            if (!entity.level.isClientSide() && entity.level.dimension() == Level.OVERWORLD) {
-                ItemStack map = createMap((ServerLevel) entity.level, entity.blockPosition());
+            if (!entity.level().isClientSide() && entity.level().dimension() == Level.OVERWORLD) {
+                ItemStack map = createMap((ServerLevel) entity.level(), entity.blockPosition());
                 return new MerchantOffer(new ItemStack(Items.EMERALD, priceEmeralds), new ItemStack(Items.COMPASS), map, 12, xp, 0.2F);
             }
             return null;
