@@ -3,6 +3,8 @@ package com.teamremastered.tlc.registries;
 import com.teamremastered.tlc.TheLostCastle;
 import com.teamremastered.tlc.processors.FoundationProcessor;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 
 import net.minecraft.world.level.levelgen.structure.templatesystem.StructureProcessorType;
@@ -19,7 +21,7 @@ public class LCProcessors {
 
     private static void commonSetup(FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            Registry.register(Registry.STRUCTURE_PROCESSOR, new ResourceLocation(TheLostCastle.MODID, "foundation_processor"), FOUNDATION_PROCESSOR);
+            Registry.register(BuiltInRegistries.STRUCTURE_PROCESSOR, new ResourceLocation(TheLostCastle.MODID, "foundation_processor"), FOUNDATION_PROCESSOR);
         });
     }
 }
