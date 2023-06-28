@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "tlc.refmap.json",
   "mixins": [
+    "DisableVanillaStrongholdsMixin"
   ],
   "minVersion": "0.8"
 }

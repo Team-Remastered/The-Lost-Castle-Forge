@@ -1,6 +1,7 @@
 package com.teamremastered.tlc;
 
 import com.mojang.logging.LogUtils;
+import com.teamremastered.tlc.config.TLCConfig;
 import com.teamremastered.tlc.registries.LCProcessors;
 import com.teamremastered.tlc.registries.LCTags;
 import com.teamremastered.tlc.registries.LCStructures;
@@ -16,6 +17,7 @@ public class TheLostCastle
 {
     public static final String MODID = "tlc";
     public static final Logger LOGGER = LogUtils.getLogger();
+    public static final String CONFIG_FILE = String.format("%s.toml", TheLostCastle.MODID);
 
     public TheLostCastle()
     {
@@ -27,5 +29,8 @@ public class TheLostCastle
         LCStructures.DEFERRED_REGISTRY_STRUCTURE.register(modEventBus);
         LCProcessors.init();
         LCTags.init();
+
+        TLCConfig.load();
+
     }
 }
