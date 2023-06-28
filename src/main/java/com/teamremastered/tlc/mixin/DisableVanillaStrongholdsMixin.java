@@ -15,13 +15,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+//Class took from Yung's Better Stronghold to disable the generation of the stronghold.
+//https://github.com/YUNG-GANG/YUNGs-Better-Strongholds/blob/1.20/Common/src/main/java/com/yungnickyoung/minecraft/betterstrongholds/mixin/DisableVanillaStrongholdsMixin.java
 @Mixin(ChunkGenerator.class)
 public class DisableVanillaStrongholdsMixin {
-    /**
-     * Prevents vanilla strongholds from generating.
-     */
+
+      //Prevents vanilla strongholds from generating.
     @Inject(method = "tryGenerateStructure", at = @At(value = "HEAD"), cancellable = true)
-    void betterstrongholds_disableVanillaStrongholds(
+    void disableVanillaStrongholds(
             StructureSet.StructureSelectionEntry structureSetEntry,
             StructureManager structureManager,
             RegistryAccess registryAccess,
